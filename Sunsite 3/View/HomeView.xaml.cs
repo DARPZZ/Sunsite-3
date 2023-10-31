@@ -107,15 +107,31 @@ namespace Sunsite_3.View
                 Each.Items.Clear();
             }
 
-            writer.WriteLine($"LISTGROUP {groupName}");
+            writer.WriteLine($"group {groupName}");
             writer.Flush();
             string groupResponse = reader.ReadLine();
+            writer.WriteLine("XOVER 1-");
+            writer.Flush();
 
+            string[] articleInfo;
+            string fullInfo;
             string response;
+            string name;
             while (!(response = reader.ReadLine()).Equals("."))
             {
-                Debug.WriteLine(response);
-                Each.Items.Add(response);
+                articleInfo = response.Split();
+                
+                if (articleInfo[1]== "Re:")
+                {
+                    name = articleInfo[2];
+                }
+                else
+                {
+                    name = articleInfo[1];
+                }
+                
+                fullInfo = articleInfo[0] + " " + name;
+                Each.Items.Add(fullInfo);
             }
         }
         public string line { get; set; }
