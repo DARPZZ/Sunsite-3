@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Sunsite_3.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sunsite_3.View"
+             mc:Ignorable="d" 
+                    d:DesignHeight="600" d:DesignWidth="1020">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="126" Name="OutputBox" />
+        <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,154,131,246" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
+        <Button Click="Button_Click" Content="Connect" HorizontalAlignment="Left" Margin="309,18,0,0" VerticalAlignment="Top" Height="44" Width="136"/>
+        <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,400,131,83" x:Name="Each"/>
+        <Button Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="708,10,0,0" VerticalAlignment="Top" Height="70" Width="92"/>
+        <Button Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="62" Width="83"/>
+
+
+
+    </Grid>
+</UserControl>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,17 +15,22 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sunsite_3.ViewModel;
 
-namespace Sunsite_3
+namespace Sunsite_3.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MessageView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MessageView : UserControl
     {
-        public MainWindow()
+        public MessageView()
         {
             InitializeComponent();
-            ((App)App.Current).ContentControlRef = this.mainContent;
+            var he = App.Sharedata.Content;
+            Debug.WriteLine(he + "  he");
+            Resultat.Text = he;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             ((App)App.Current).ChangeUserControl(typeof(HomeViewModel));
         }
     }
