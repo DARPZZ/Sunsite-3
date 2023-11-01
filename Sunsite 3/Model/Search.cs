@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.PortableExecutable;
@@ -16,18 +17,20 @@ namespace Sunsite_3.Model
             ListboxList.Items.Clear();
             writer.WriteLine("LIST");
             writer.Flush();
-
+           
             while (true)
             {
+               
                 string response = reader.ReadLine();
                 if (response == ".")
                     break;
 
-                string[] parts = response.Split(' ');
+                string[] parts = response.Split();
                 if (parts.Length > 0)
                 {
-                    if (parts.Contains(searchWord))
+                    if (response.Contains(searchWord))
                     {
+                        
                         ListboxList.Items.Add(parts[0] + Environment.NewLine);
                     }
                 }

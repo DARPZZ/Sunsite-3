@@ -17,7 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sunsite_3.Model;
 using Sunsite_3.ViewModel;
-
+using IniParser;
+using IniParser.Model;
 namespace Sunsite_3.View
 {
     /// <summary>
@@ -36,6 +37,7 @@ namespace Sunsite_3.View
         {
             InitializeComponent();
             initData();
+            ReadFavorits();
 
         }
         public void initData()
@@ -54,10 +56,6 @@ namespace Sunsite_3.View
                 reader = App.Sharedata.Reader;
 
                 con.Authenticate(OutputBox, reader, writer);
-
-
-
-
                 ReceiveNews();
 
             }
@@ -90,19 +88,24 @@ namespace Sunsite_3.View
 
                     ListboxList.Items.Add(parts[0] + Environment.NewLine);
 
+
                 }
             }
+        }
+        public void GetSpecializedInfo(ListBox genListBox)
+        {
+            string selectedItem = genListBox.SelectedItem.ToString();
+            App.Sharedata.ForPosting = selectedItem;
+            Debug.WriteLine(selectedItem);
+            GetArticlesInNewsgroup(selectedItem);
         }
 
 
         private void ListboxList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
-
-            string selectedItem = ListboxList.SelectedItem.ToString();
-            App.Sharedata.ForPosting = selectedItem;
-            Debug.WriteLine(selectedItem);
-            GetArticlesInNewsgroup(selectedItem);
+            GetSpecializedInfo(ListboxList);
+          
 
         }
         public void GetArticlesInNewsgroup(string groupName)
@@ -194,11 +197,35 @@ namespace Sunsite_3.View
 
             }
         }
-        public void SearchingWord(string searchWord)
+        public void ReadFavorits()
         {
+            favouritsbox.Items.Clear();
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
 
+           
+                SectionData favorSection = data.Sections.GetSectionData("favor");
 
+                foreach (KeyData key in favorSection.Keys)
+                {
+                    
+                    string value = key.Value;
+                    favouritsbox.Items.Add(value);
+                }
+        }
+
+        private void saveFavourit(object sender, RoutedEventArgs e)
+        {
+            string iteam = ListboxList.SelectedItem.ToString();
+
+            infFil.Write(iteam.Trim(), iteam, "favor");
+            ReadFavorits();
+        }
+
+        private void favouritsbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            GetSpecializedInfo(favouritsbox);
         }
     }
-
 }
+

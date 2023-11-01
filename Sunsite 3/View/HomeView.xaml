@@ -5,16 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Sunsite_3.View"
              mc:Ignorable="d" 
-                    d:DesignHeight="600" d:DesignWidth="1020">
+                    d:DesignHeight="600" d:DesignWidth="1080">
     <Grid>
         <TextBox HorizontalAlignment="Left" Margin="10,464,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="126" Name="OutputBox" />
-        <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,126,131,274" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
-        <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,356,131,44" x:Name="Each"/>
-        <Button Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="918,0,0,0" VerticalAlignment="Top" Height="70" Width="92"/>
-        <Button Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="62" Width="83"/>
-        <Label Content="Search for news group" HorizontalAlignment="Left" Margin="229,94,0,0" VerticalAlignment="Top" Width="132"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,102,0,0" TextWrapping="Wrap" x:Name="Searching" PreviewKeyDown="searchWordInBox"  VerticalAlignment="Top" Width="222"/>
-        <Button Content="Con" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top" Height="60" Width="111"/>
+        <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="332,124,178,276" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
+        <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="332,390,178,10" x:Name="Each"/>
+        <Button Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="810,329,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
+        <Button Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="568,329,0,0" VerticalAlignment="Top" Height="25" Width="83"/>
+        <Label Content="Search for news group" HorizontalAlignment="Left" Margin="340,92,0,0" VerticalAlignment="Top" Width="132"/>
+        <TextBox HorizontalAlignment="Left" Margin="540,100,0,0" TextWrapping="Wrap" x:Name="Searching" PreviewKeyDown="searchWordInBox"  VerticalAlignment="Top" Width="222"/>
+        <Button Click="saveFavourit" Content="Save as favourit" HorizontalAlignment="Left" Margin="332,329,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
+        <Label Content="Youre favourits news groups" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="166"/>
+        <ListBox x:Name="favouritsbox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,214,804,164" MouseDoubleClick="favouritsbox_MouseDoubleClick"/>
 
 
 
