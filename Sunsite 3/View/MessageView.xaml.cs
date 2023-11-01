@@ -26,7 +26,7 @@ namespace Sunsite_3.View
         {
             InitializeComponent();
             var he = App.Sharedata.Content;
-            Debug.WriteLine(he + "  he");
+            
             Resultat.Text = he;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
