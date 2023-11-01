@@ -19,6 +19,8 @@ using Sunsite_3.Model;
 using Sunsite_3.ViewModel;
 using IniParser;
 using IniParser.Model;
+using System.Windows.Threading;
+
 namespace Sunsite_3.View
 {
     /// <summary>
@@ -207,22 +209,36 @@ namespace Sunsite_3.View
 
             }
         }
-        public void ReadFavorits()
+
+        public async  void ReadFavorits()
         {
             favouritsbox.Items.Clear();
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
 
-           
+            
+           await Task.Run(() =>
+            {
+                int threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
+
+                Debug.WriteLine($"Thread {threadId} reeeeeeeeeeeeeeeeeeeeeeeeee");
+
+                var parser = new FileIniDataParser();
+                IniData data = parser.ReadFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
+
                 SectionData favorSection = data.Sections.GetSectionData("favor");
 
                 foreach (KeyData key in favorSection.Keys)
                 {
-                    
                     string value = key.Value;
-                    favouritsbox.Items.Add(value);
+
+                    
+                    Dispatcher.Invoke(() =>
+                    {
+                        favouritsbox.Items.Add(value);
+                    });
                 }
+            });
         }
+
 
         private void saveFavourit(object sender, RoutedEventArgs e)
         {
