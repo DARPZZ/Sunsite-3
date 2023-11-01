@@ -12,6 +12,7 @@
         <Button Click="Post" Content="Post" HorizontalAlignment="Left" Margin="760,295,0,160" Width="44"/>
         <TextBox x:Name="group" HorizontalAlignment="Left" Margin="347,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277"/>
         <TextBox x:Name="SubjectTextbox" HorizontalAlignment="Left" Margin="347,132,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="277" Height="70"/>
+        <Button Click="back" Content="Go back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="59" Width="87"/>
 
     </Grid>
 </UserControl>

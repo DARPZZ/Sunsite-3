@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sunsite_3.Model;
+using Sunsite_3.ViewModel;
 
 namespace Sunsite_3.View
 {
@@ -122,5 +123,9 @@ namespace Sunsite_3.View
             PostToNewsgroup();
         }
 
+        private void back(object sender, RoutedEventArgs e)
+        {
+            ((App)App.Current).ChangeUserControl(typeof(HomeViewModel));
+        }
     }
 }
