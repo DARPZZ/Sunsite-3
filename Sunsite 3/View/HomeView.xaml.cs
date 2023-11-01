@@ -72,16 +72,7 @@ namespace Sunsite_3.View
 
 
 
-        private bool isReceivingNews = false;
-
-        private async void StartReceivingNews()
-        {
-            if (!isReceivingNews)
-            {
-                isReceivingNews = true;
-                await Task.Run(() => ReceiveNews());
-            }
-        }
+       
 
         private void ReceiveNews()
         {
@@ -100,14 +91,13 @@ namespace Sunsite_3.View
                 {
                     string item = parts[0];
 
-                    Dispatcher.Invoke(() =>
-                    {
+                   
                         ListboxList.Items.Add(item + Environment.NewLine);
-                    });
+                    
                 }
             }
 
-            isReceivingNews = false; // Reset the flag when the operation is done.
+          
         }
 
 
