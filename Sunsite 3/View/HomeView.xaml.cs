@@ -42,7 +42,7 @@ namespace Sunsite_3.View
             ReadFavorits();
 
         }
-        public void initData()
+        public async void initData()
         {
             server = infFil.Read("server_name", "login");
 
@@ -58,7 +58,7 @@ namespace Sunsite_3.View
                 reader = App.Sharedata.Reader;
 
                 con.Authenticate(OutputBox, reader, writer);
-                ReceiveNews();
+                await StartReceivingNews();
 
             }
             catch (Exception ex)
@@ -72,13 +72,23 @@ namespace Sunsite_3.View
             initData();
         }
 
-
-
-       
-
-        private void ReceiveNews()
+        private async Task StartReceivingNews()
         {
-            ListboxList.Items.Clear();
+           
+            ListboxList.IsEnabled = false;
+            favouritsbox.IsEnabled = false;
+            await Task.Run(() => ReceiveNewsAsync());
+        }
+
+
+        private void ReceiveNewsAsync()
+        {
+            
+            Dispatcher.Invoke(() =>
+            {
+                ListboxList.Items.Clear();
+            });
+
             writer.WriteLine("LIST");
             writer.Flush();
 
@@ -93,14 +103,23 @@ namespace Sunsite_3.View
                 {
                     string item = parts[0];
 
-                   
-                        ListboxList.Items.Add(item + Environment.NewLine);
                     
+                    Dispatcher.Invoke(() =>
+                    {
+                        ListboxList.Items.Add(item + Environment.NewLine);
+                    });
                 }
             }
 
-          
+            
+            Dispatcher.Invoke(() =>
+            {
+                ListboxList.IsEnabled = true;
+                favouritsbox.IsEnabled = true;
+            });
         }
+
+
 
 
 
@@ -198,7 +217,7 @@ namespace Sunsite_3.View
                 Debug.WriteLine(userWord + " whdahwdhwhadhadhwahhwd");
                 if (userWord == "")
                 {
-                    ReceiveNews();
+                    StartReceivingNews();
                 }
                 else
                 {
