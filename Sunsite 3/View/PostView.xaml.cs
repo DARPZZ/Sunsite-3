@@ -54,8 +54,8 @@ namespace Sunsite_3.View
             {
                 using (TcpClient client = new TcpClient(server, port))
                 using (NetworkStream stream = client.GetStream())
-                using (StreamReader reader = new StreamReader(stream, Encoding.GetEncoding("ISO-8859-1")))
-                using (StreamWriter writer = new StreamWriter(stream, Encoding.GetEncoding("ISO-8859-1")))
+                using (StreamReader reader = new StreamReader(stream, Encoding.Default))
+                using (StreamWriter writer = new StreamWriter(stream, Encoding.Default))
                 {
                    
                     string response = reader.ReadLine();
