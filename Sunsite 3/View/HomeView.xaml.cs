@@ -35,10 +35,10 @@ namespace Sunsite_3.View
         public HomeView()
         {
             InitializeComponent();
+            initData();
 
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void initData()
         {
             server = infFil.Read("server_name", "login");
 
@@ -65,6 +65,11 @@ namespace Sunsite_3.View
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           initData();
         }
 
         private void ReceiveNews()

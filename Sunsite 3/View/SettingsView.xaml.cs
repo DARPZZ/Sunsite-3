@@ -27,27 +27,32 @@ namespace Sunsite_3.View
         string port;
         string server_name;
         Connection con = new Connection();
+        IniFile myInf = new IniFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
         public SettingsView()
         {
             InitializeComponent();
+            LoadData();
         }
 
         private void GoBacktoHome(object sender, RoutedEventArgs e)
         {
             ((App)App.Current).ChangeUserControl(typeof(HomeViewModel));
         }
-        public void data(IniFile inf)
+       
+        private void LoadData()
         {
-            con.ReadIniFile();
+            portBox.Text = myInf.Read("port", "login");
+            serverBox.Text = myInf.Read("server_name", "login");
+            UsernameBox.Text = myInf.Read("username", "login");
+            passwordBoxText.Password = myInf.Read("password", "login");
         }
-
         private void saveSettings(object sender, RoutedEventArgs e)
         {
             string portNr = portBox.Text;
             string serverNr = serverBox.Text;
             string usernameNr = UsernameBox.Text;
             string passwordNr = passwordBoxText.Password.ToString();
-            var myInf = new IniFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
+            
             myInf.Write("username", usernameNr, "login");
             myInf.Write("password", passwordNr, "login");
             myInf.Write("port", portNr, "login");
