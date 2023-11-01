@@ -58,8 +58,8 @@ namespace Sunsite_3.View
                 reader = App.Sharedata.Reader;
 
                 con.Authenticate(OutputBox, reader, writer);
-                await StartReceivingNews();
-
+                StartFlowNews();
+                
             }
             catch (Exception ex)
             {
@@ -72,14 +72,13 @@ namespace Sunsite_3.View
             initData();
         }
 
-        private async Task StartReceivingNews()
+        private async Task StartFlowNews()
         {
            
             ListboxList.IsEnabled = false;
             favouritsbox.IsEnabled = false;
             await Task.Run(() => ReceiveNewsAsync());
         }
-
 
         private void ReceiveNewsAsync()
         {
@@ -118,9 +117,6 @@ namespace Sunsite_3.View
                 favouritsbox.IsEnabled = true;
             });
         }
-
-
-
 
 
         public void GetSpecializedInfo(ListBox genListBox)
@@ -217,14 +213,12 @@ namespace Sunsite_3.View
                 Debug.WriteLine(userWord + " whdahwdhwhadhadhwahhwd");
                 if (userWord == "")
                 {
-                    StartReceivingNews();
+                    StartFlowNews();
                 }
                 else
                 {
                     search.search(writer, reader, ListboxList, userWord);
                 }
-
-
 
             }
         }
