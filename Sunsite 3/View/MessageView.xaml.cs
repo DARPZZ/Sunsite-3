@@ -28,10 +28,13 @@ namespace Sunsite_3.View
             var he = App.Sharedata.Content;
             
             Resultat.Text = he;
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ((App)App.Current).ChangeUserControl(typeof(HomeViewModel));
         }
+
+       
     }
 }

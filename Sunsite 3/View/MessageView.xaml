@@ -7,8 +7,9 @@
              mc:Ignorable="d" 
                      d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBox x:Name="Resultat" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Center" MaxHeight="580" Width="980" />
+        <TextBox x:Name="Resultat" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Center" MaxHeight="580" Width="870" VerticalScrollBarVisibility="Visible" />
         <Button Click="Button_Click" Content="Back" HorizontalAlignment="Left" VerticalAlignment="Top" Height="58" Width="31"/>
+       
 
     </Grid>
 </UserControl>

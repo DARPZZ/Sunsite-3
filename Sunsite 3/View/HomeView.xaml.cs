@@ -58,7 +58,7 @@ namespace Sunsite_3.View
                 reader = App.Sharedata.Reader;
 
                 con.Authenticate(OutputBox, reader, writer);
-                StartFlowNews();
+                await StartFlowNews();
                 
             }
             catch (Exception ex)
