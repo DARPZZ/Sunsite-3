@@ -14,6 +14,7 @@
         <Button Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="62" Width="83"/>
         <Label Content="Search for news group" HorizontalAlignment="Left" Margin="229,94,0,0" VerticalAlignment="Top" Width="132"/>
         <TextBox HorizontalAlignment="Center" Margin="0,102,0,0" TextWrapping="Wrap" x:Name="Searching" PreviewKeyDown="searchWordInBox"  VerticalAlignment="Top" Width="222"/>
+        <Button Content="Con" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top" Height="60" Width="111"/>
 
 
 

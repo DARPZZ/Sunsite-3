@@ -69,7 +69,7 @@ namespace Sunsite_3.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           initData();
+            initData();
         }
 
         private void ReceiveNews()
@@ -87,9 +87,9 @@ namespace Sunsite_3.View
                 string[] parts = response.Split(' ');
                 if (parts.Length > 0)
                 {
-                    
-                        ListboxList.Items.Add(parts[0] + Environment.NewLine);
-                    
+
+                    ListboxList.Items.Add(parts[0] + Environment.NewLine);
+
                 }
             }
         }
@@ -125,8 +125,8 @@ namespace Sunsite_3.View
             while (!(response = reader.ReadLine()).Equals("."))
             {
                 articleInfo = response.Split();
-                
-                if (articleInfo[1]== "Re:")
+
+                if (articleInfo[1] == "Re:")
                 {
                     name = articleInfo[2];
                 }
@@ -134,7 +134,7 @@ namespace Sunsite_3.View
                 {
                     name = articleInfo[1];
                 }
-                
+
                 fullInfo = articleInfo[0] + " " + name;
                 Each.Items.Add(fullInfo);
             }
@@ -177,11 +177,11 @@ namespace Sunsite_3.View
         Search search = new Search();
         private void searchWordInBox(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 var userWord = Searching.Text;
                 Debug.WriteLine(userWord + " whdahwdhwhadhadhwahhwd");
-                if(userWord == "")
+                if (userWord == "")
                 {
                     ReceiveNews();
                 }
@@ -190,13 +190,13 @@ namespace Sunsite_3.View
                     search.search(writer, reader, ListboxList, userWord);
                 }
 
-                
+
 
             }
         }
         public void SearchingWord(string searchWord)
         {
-           
+
 
         }
     }
