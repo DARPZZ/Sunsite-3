@@ -7,9 +7,11 @@
              mc:Ignorable="d" 
               d:DesignHeight="600" d:DesignWidth="1020">
     <Grid>
-        <TextBox HorizontalAlignment="Center" Margin="0,295,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="416" Height="145"/>
-        <Label Content="You have selected news group" HorizontalAlignment="Left" Margin="52,84,0,0" VerticalAlignment="Top" Height="31" Width="227"/>
+        <TextBox x:Name="BodyBox" HorizontalAlignment="Center" Margin="0,295,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="416" Height="145"/>
+        <Label Content="You have selected news group" HorizontalAlignment="Left" Margin="120,82,0,0" VerticalAlignment="Top" Height="31" Width="227"/>
         <Button Click="Post" Content="Post" HorizontalAlignment="Left" Margin="760,295,0,160" Width="44"/>
+        <TextBox x:Name="group" HorizontalAlignment="Left" Margin="347,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277"/>
+        <TextBox x:Name="SubjectTextbox" HorizontalAlignment="Left" Margin="347,132,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="277" Height="70"/>
 
     </Grid>
 </UserControl>

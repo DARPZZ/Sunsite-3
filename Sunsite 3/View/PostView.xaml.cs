@@ -27,11 +27,13 @@ namespace Sunsite_3.View
 
         StreamWriter writer = App.Sharedata.Writer;
         StreamReader reader = App.Sharedata.Reader;
+        string ko;
         public PostView()
         {
             InitializeComponent();
-            var ko = App.Sharedata.ForPosting;
+             ko = App.Sharedata.ForPosting;
             Debug.WriteLine(ko + "   SUIIIIIII");
+            group.Text = ko;
         }
         IniFile infFil = new IniFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
 
@@ -42,11 +44,11 @@ namespace Sunsite_3.View
             var pawwordInf = infFil.Read("password", "login");
             string server = infFil.Read("server_name", "login");
             int port = 119;
-            string newsgroup = "dk.test";
+            string newsgroup = ko;
             string username = userNameInf;
             string password = pawwordInf;
-            string subject = "Test";
-            string articleText = "Your article content. ";
+            string subject = SubjectTextbox.Text;
+            string articleText = BodyBox.Text;
 
             try
             {
@@ -55,11 +57,11 @@ namespace Sunsite_3.View
                 using (StreamReader reader = new StreamReader(stream, Encoding.GetEncoding("ISO-8859-1")))
                 using (StreamWriter writer = new StreamWriter(stream, Encoding.GetEncoding("ISO-8859-1")))
                 {
-                    // Read the server's initial response
+                   
                     string response = reader.ReadLine();
                     Debug.WriteLine(response);
 
-                    // Send a command to authenticate (if needed)
+                  
                     if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
                     {
                         writer.WriteLine($"AUTHINFO USER {username}");
@@ -73,31 +75,29 @@ namespace Sunsite_3.View
                         Debug.WriteLine(response);
                     }
 
-                    // Send a command to set the newsgroup
+
                     writer.WriteLine($"GROUP {newsgroup}");
                     writer.Flush();
                     response = reader.ReadLine();
                     Debug.WriteLine(response);
 
-                    // Create and send the article headers and body
                     writer.WriteLine($"POST");
                     writer.Flush();
                     response = reader.ReadLine();
                     Debug.WriteLine(response);
 
-                    // Send the article headers
+                    
                     writer.WriteLine($"Subject: {subject}");
                     writer.WriteLine($"From: {username}");
                     writer.WriteLine($"Newsgroups: {newsgroup}");
-                    writer.WriteLine("Content-Type: text/plain; charset=ISO-8859-1"); // Adjust content type if needed
-                    writer.WriteLine(""); // Empty line to separate headers from the body
+                    writer.WriteLine("Content-Type: text/plain; charset=ISO-8859-1"); 
+                    writer.WriteLine(""); 
                     writer.Flush();
 
-                    // Send the article body
                     writer.WriteLine(articleText);
                     writer.Flush();
 
-                    // Send a period to indicate the end of the article
+                   
                     writer.WriteLine(".");
                     writer.Flush();
                     response = reader.ReadLine();
