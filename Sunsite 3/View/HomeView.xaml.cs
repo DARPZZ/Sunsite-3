@@ -56,7 +56,7 @@ namespace Sunsite_3.View
                 reader = App.Sharedata.Reader;
 
                 con.Authenticate(OutputBox, reader, writer);
-                NewsAsync();
+                ReceiveNews();
 
             }
             catch (Exception ex)
@@ -70,19 +70,22 @@ namespace Sunsite_3.View
             initData();
         }
 
-        private async void NewsAsync()
+
+
+        private bool isReceivingNews = false;
+
+        private async void StartReceivingNews()
         {
-            await Task.Run(() => ReceiveNews());
+            if (!isReceivingNews)
+            {
+                isReceivingNews = true;
+                await Task.Run(() => ReceiveNews());
+            }
         }
 
         private void ReceiveNews()
         {
-            Dispatcher.Invoke(() =>
-            {
-                ListboxList.Items.Clear();
-            });
-
-           
+            ListboxList.Items.Clear();
             writer.WriteLine("LIST");
             writer.Flush();
 
@@ -103,7 +106,10 @@ namespace Sunsite_3.View
                     });
                 }
             }
+
+            isReceivingNews = false; // Reset the flag when the operation is done.
         }
+
 
 
         public void GetSpecializedInfo(ListBox genListBox)
@@ -200,7 +206,7 @@ namespace Sunsite_3.View
                 Debug.WriteLine(userWord + " whdahwdhwhadhadhwahhwd");
                 if (userWord == "")
                 {
-                    NewsAsync();
+                    ReceiveNews();
                 }
                 else
                 {
