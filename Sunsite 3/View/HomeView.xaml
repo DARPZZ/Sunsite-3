@@ -7,12 +7,14 @@
              mc:Ignorable="d" 
                     d:DesignHeight="600" d:DesignWidth="1020">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="126" Name="OutputBox" />
-        <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,154,131,246" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
+        <TextBox HorizontalAlignment="Left" Margin="10,464,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="126" Name="OutputBox" />
+        <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,200,131,200" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
         <Button Click="Button_Click" Content="Connect" HorizontalAlignment="Left" Margin="309,18,0,0" VerticalAlignment="Top" Height="44" Width="136"/>
-        <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,400,131,83" x:Name="Each"/>
+        <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,439,131,44" x:Name="Each"/>
         <Button Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="708,10,0,0" VerticalAlignment="Top" Height="70" Width="92"/>
         <Button Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="62" Width="83"/>
+        <Label Content="Search for news group" HorizontalAlignment="Left" Margin="229,168,0,0" VerticalAlignment="Top" Width="132"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,176,0,0" TextWrapping="Wrap" x:Name="Searching" PreviewKeyDown="searchWordInBox"  VerticalAlignment="Top" Width="222"/>
 
 
 

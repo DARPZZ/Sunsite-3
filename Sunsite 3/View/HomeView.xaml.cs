@@ -69,6 +69,7 @@ namespace Sunsite_3.View
 
         private void ReceiveNews()
         {
+            ListboxList.Items.Clear();
             writer.WriteLine("LIST");
             writer.Flush();
 
@@ -81,10 +82,9 @@ namespace Sunsite_3.View
                 string[] parts = response.Split(' ');
                 if (parts.Length > 0)
                 {
-                    if (parts.Contains("dk.test"))
-                    {
+                    
                         ListboxList.Items.Add(parts[0] + Environment.NewLine);
-                    }
+                    
                 }
             }
         }
@@ -169,7 +169,31 @@ namespace Sunsite_3.View
         {
             ((App)App.Current).ChangeUserControl(typeof(PostViewModel));
         }
+        Search search = new Search();
+        private void searchWordInBox(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                var userWord = Searching.Text;
+                Debug.WriteLine(userWord + " whdahwdhwhadhadhwahhwd");
+                if(userWord == "")
+                {
+                    ReceiveNews();
+                }
+                else
+                {
+                    search.search(writer, reader, ListboxList, userWord);
+                }
 
+                
 
+            }
+        }
+        public void SearchingWord(string searchWord)
+        {
+           
+
+        }
     }
+
 }
