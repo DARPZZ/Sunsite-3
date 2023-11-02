@@ -43,7 +43,7 @@ namespace Sunsite_3.View
             ReadFavorits();
 
         }
-        public async void initData()
+        public  void initData()
         {
             server = infFil.Read("server_name", "login");
 
@@ -63,7 +63,7 @@ namespace Sunsite_3.View
                 reader = App.Sharedata.Reader;
 
                 con.Authenticate(OutputBox, reader, writer);
-                await StartFlowNews();
+                 ReceiveNews();
                 
             }
             catch (Exception ex)
@@ -77,21 +77,13 @@ namespace Sunsite_3.View
             initData();
         }
 
-        private async Task StartFlowNews()
-        {
-           
-            ListboxList.IsEnabled = false;
-            favouritsbox.IsEnabled = false;
-            await Task.Run(() => ReceiveNews());
-        }
-
+       
         private void ReceiveNews()
         {
             
-            Dispatcher.Invoke(() =>
-            {
+            
                 ListboxList.Items.Clear();
-            });
+           
 
             writer.WriteLine("LIST");
             writer.Flush();
@@ -108,28 +100,25 @@ namespace Sunsite_3.View
                     string item = parts[0];
 
                     
-                    Dispatcher.Invoke(() =>
-                    {
+                    
                         ListboxList.Items.Add(item + Environment.NewLine);
-                    });
+                    
                 }
             }
 
-            
-            Dispatcher.Invoke(() =>
-            {
-                ListboxList.IsEnabled = true;
-                favouritsbox.IsEnabled = true;
-            });
         }
 
 
         public void GetSpecializedInfo(ListBox genListBox)
         {
-            string selectedItem = genListBox.SelectedItem.ToString();
-            App.Sharedata.ForPosting = selectedItem;
-            Debug.WriteLine(selectedItem);
-            GetArticlesInNewsgroup(selectedItem);
+            if(genListBox.SelectedItem != null)
+            {
+                string selectedItem = genListBox.SelectedItem.ToString();
+                App.Sharedata.ForPosting = selectedItem;
+                Debug.WriteLine(selectedItem);
+                GetArticlesInNewsgroup(selectedItem);
+            }
+           
         }
 
 
@@ -218,7 +207,7 @@ namespace Sunsite_3.View
                
                 if (userWord == "")
                 {
-                    StartFlowNews();
+                    ReceiveNews();
                 }
                 else
                 {
