@@ -82,10 +82,10 @@ namespace Sunsite_3.View
            
             ListboxList.IsEnabled = false;
             favouritsbox.IsEnabled = false;
-            await Task.Run(() => ReceiveNewsAsync());
+            await Task.Run(() => ReceiveNews());
         }
 
-        private void ReceiveNewsAsync()
+        private void ReceiveNews()
         {
             
             Dispatcher.Invoke(() =>
