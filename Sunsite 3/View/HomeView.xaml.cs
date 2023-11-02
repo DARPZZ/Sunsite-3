@@ -198,10 +198,14 @@ namespace Sunsite_3.View
         }
         private void Each_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            string selectedItem = Each.SelectedItem.ToString();
+            if(Each.SelectedItem !=null)
+            {
+                string selectedItem = Each.SelectedItem.ToString();
 
-            ReadArticle(selectedItem);
-            ((App)App.Current).ChangeUserControl(typeof(MessageViewModel));
+                ReadArticle(selectedItem);
+                ((App)App.Current).ChangeUserControl(typeof(MessageViewModel));
+            }
+          
         }
 
         private void SettingsClick(object sender, RoutedEventArgs e)
