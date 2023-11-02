@@ -34,7 +34,5 @@ namespace Sunsite_3.View
         {
             ((App)App.Current).ChangeUserControl(typeof(HomeViewModel));
         }
-
-       
     }
 }

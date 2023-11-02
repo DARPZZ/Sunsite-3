@@ -273,11 +273,15 @@ namespace Sunsite_3.View
 
         private void DeleteFavourit(object sender, RoutedEventArgs e)
         {
-            string wordToDelte;
+            if (favouritsbox.SelectedItem != null)
+            {
+                string wordToDelte;
             wordToDelte = favouritsbox.SelectedItem.ToString();
+             
             Debug.WriteLine(wordToDelte);
             infFil.DeleteKey(wordToDelte, "favor");
             ReadFavorits();
+        }
                 
         }
     }
