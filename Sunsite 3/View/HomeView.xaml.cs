@@ -34,6 +34,7 @@ namespace Sunsite_3.View
         private StreamWriter writer;
         Connection con = new Connection();
         string server;
+        int port;
         IniFile infFil = new IniFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
         public HomeView()
         {
@@ -46,7 +47,11 @@ namespace Sunsite_3.View
         {
             server = infFil.Read("server_name", "login");
 
-            int port = 119;
+            string portString = infFil.Read("port", "login");
+            if (int.TryParse(portString, out int parsedPort))
+            {
+                port = parsedPort;
+            }
 
             try
             {
