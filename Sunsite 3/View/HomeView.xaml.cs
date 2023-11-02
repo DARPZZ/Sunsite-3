@@ -260,7 +260,7 @@ namespace Sunsite_3.View
 
         private void saveFavourit(object sender, RoutedEventArgs e)
         {
-            string iteam = ListboxList.SelectedItem.ToString();
+            string iteam = ListboxList.SelectedItem.ToString().Trim();
 
             infFil.Write(iteam.Trim(), iteam, "favor");
             ReadFavorits();
@@ -269,6 +269,16 @@ namespace Sunsite_3.View
         private void favouritsbox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             GetSpecializedInfo(favouritsbox);
+        }
+
+        private void DeleteFavourit(object sender, RoutedEventArgs e)
+        {
+            string wordToDelte;
+            wordToDelte = favouritsbox.SelectedItem.ToString();
+            Debug.WriteLine(wordToDelte);
+            infFil.DeleteKey(wordToDelte, "favor");
+            ReadFavorits();
+                
         }
     }
 }
