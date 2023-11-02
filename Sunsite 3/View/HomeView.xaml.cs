@@ -87,10 +87,10 @@ namespace Sunsite_3.View
 
         private void ReceiveNews()
         {
-            
             Dispatcher.Invoke(() =>
             {
                 ListboxList.Items.Clear();
+                LoadingProgressBar.Visibility = Visibility.Visible; 
             });
 
             writer.WriteLine("LIST");
@@ -107,7 +107,6 @@ namespace Sunsite_3.View
                 {
                     string item = parts[0];
 
-                    
                     Dispatcher.Invoke(() =>
                     {
                         ListboxList.Items.Add(item + Environment.NewLine);
@@ -115,13 +114,14 @@ namespace Sunsite_3.View
                 }
             }
 
-            
             Dispatcher.Invoke(() =>
             {
+                LoadingProgressBar.Visibility = Visibility.Hidden;
                 ListboxList.IsEnabled = true;
                 favouritsbox.IsEnabled = true;
             });
         }
+
 
 
         public void GetSpecializedInfo(ListBox genListBox)

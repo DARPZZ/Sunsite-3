@@ -19,6 +19,7 @@
         <Label FontSize="15" FontWeight="ExtraBold" Content="Youre favourits news groups" HorizontalAlignment="Left" Margin="27,179,0,0" VerticalAlignment="Top" Width="232"/>
         <ListBox  x:Name="favouritsbox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,214,804,164" MouseDoubleClick="favouritsbox_MouseDoubleClick"/>
         <Button Style="{DynamicResource RoundButton}" FontWeight="bold" Click="DeleteFavourit" Content="Delete favourit" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.106,-0.09" Height="25" Width="96"/>
+        <ProgressBar HorizontalAlignment="Left" Height="10" Margin="396,359,0,0" VerticalAlignment="Top" Width="431" x:Name="LoadingProgressBar" IsIndeterminate="True"/>
 
 
 
