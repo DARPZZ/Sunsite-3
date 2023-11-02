@@ -7,19 +7,21 @@
              mc:Ignorable="d" 
                     d:DesignHeight="600" d:DesignWidth="1080">
     <Grid>
+        
         <TextBox HorizontalAlignment="Left" Margin="10,464,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="126" Name="OutputBox" />
         <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="332,124,178,276" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
         <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="332,390,178,10" x:Name="Each"/>
-        <Button Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="781,329,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
-        <Button Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="610,329,0,0" VerticalAlignment="Top" Height="25" Width="82"/>
+        <Button Style="{DynamicResource RoundButton}" FontWeight="Bold" Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="781,329,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
+        <Button Style="{DynamicResource RoundButton}" FontWeight="bold" Click="PostingArticals" Content="Post" HorizontalAlignment="Left" Margin="636,329,0,0" VerticalAlignment="Top" Height="25" Width="82"/>
         <Label Content="Search for news group" HorizontalAlignment="Left" Margin="340,92,0,0" VerticalAlignment="Top" Width="132"/>
         <TextBox HorizontalAlignment="Left" Margin="540,100,0,0" TextWrapping="Wrap" x:Name="Searching" PreviewKeyDown="searchWordInBox"  VerticalAlignment="Top" Width="222"/>
-        <Button Click="saveFavourit" Content="Save as favourit" HorizontalAlignment="Left" Margin="340,329,0,0" VerticalAlignment="Top" Height="25" Width="92"/>
-        <Label Content="Youre favourits news groups" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" Width="166"/>
-        <ListBox x:Name="favouritsbox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,214,804,164" MouseDoubleClick="favouritsbox_MouseDoubleClick"/>
-        <Button Click="DeleteFavourit" Content="Delete favourit" HorizontalAlignment="Left" Margin="469,329,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.106,-0.09" Height="25" Width="96"/>
+        <Button Style="{DynamicResource RoundButton}" FontWeight="bold" Click="saveFavourit" Content="Save as favourit" HorizontalAlignment="Left" Margin="340,329,0,0" VerticalAlignment="Top" Height="25" Width="111"/>
+        <Label FontSize="15" FontWeight="ExtraBold" Content="Youre favourits news groups" HorizontalAlignment="Left" Margin="27,179,0,0" VerticalAlignment="Top" Width="232"/>
+        <ListBox  x:Name="favouritsbox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,214,804,164" MouseDoubleClick="favouritsbox_MouseDoubleClick"/>
+        <Button Style="{DynamicResource RoundButton}" FontWeight="bold" Click="DeleteFavourit" Content="Delete favourit" HorizontalAlignment="Center" Margin="0,329,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.106,-0.09" Height="25" Width="96"/>
 
 
 
     </Grid>
+    
 </UserControl>
