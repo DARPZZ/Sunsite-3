@@ -215,7 +215,7 @@ namespace Sunsite_3.View
             if (e.Key == Key.Enter)
             {
                 var userWord = Searching.Text;
-                Debug.WriteLine(userWord + " whdahwdhwhadhadhwahhwd");
+               
                 if (userWord == "")
                 {
                     StartFlowNews();
