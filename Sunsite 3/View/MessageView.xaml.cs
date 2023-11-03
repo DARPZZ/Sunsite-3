@@ -25,9 +25,9 @@ namespace Sunsite_3.View
         public MessageView()
         {
             InitializeComponent();
-            var he = App.Sharedata.Content;
+            var message = App.Sharedata.Content;
             
-            Resultat.Text = he;
+            Resultat.Text = message;
 
         }
         private void Button_Click(object sender, RoutedEventArgs e)

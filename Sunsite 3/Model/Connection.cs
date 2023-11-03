@@ -13,7 +13,7 @@ namespace Sunsite_3.Model
     {
         string userName;
         string password;
-        public void Authenticate(TextBox OutputBox, StreamReader reader, StreamWriter writer)
+        public void Authenticate( StreamReader reader, StreamWriter writer)
         {
             ReadIniFile();
 
@@ -21,13 +21,13 @@ namespace Sunsite_3.Model
             writer.Flush();
             string response = reader.ReadLine();
 
-            OutputBox.AppendText(response + Environment.NewLine);
+          
             writer.WriteLine("AUTHINFO PASS " + password);
             writer.Flush();
             for (int i = 0; i < 2; i++)
             {
                 response = reader.ReadLine();
-                OutputBox.AppendText(response + Environment.NewLine);
+               
 
             }
         }

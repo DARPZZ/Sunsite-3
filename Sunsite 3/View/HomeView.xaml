@@ -7,8 +7,6 @@
              mc:Ignorable="d" 
                     d:DesignHeight="600" d:DesignWidth="1080">
     <Grid>
-        
-        <TextBox HorizontalAlignment="Left" Margin="10,464,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="126" Name="OutputBox" />
         <ListBox  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="332,124,178,276" x:Name="ListboxList" MouseDoubleClick="ListboxList_MouseDoubleClick"/>
         <ListBox MouseDoubleClick="Each_MouseDoubleClick"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="332,390,178,10" x:Name="Each"/>
         <Button Style="{DynamicResource RoundButton}" FontWeight="Bold" Content="Settings" Click="SettingsClick" HorizontalAlignment="Left" Margin="781,329,0,0" VerticalAlignment="Top" Height="25" Width="92"/>

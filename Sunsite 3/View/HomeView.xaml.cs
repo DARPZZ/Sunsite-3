@@ -62,7 +62,7 @@ namespace Sunsite_3.View
                 writer = App.Sharedata.Writer;
                 reader = App.Sharedata.Reader;
 
-                con.Authenticate(OutputBox, reader, writer);
+                con.Authenticate( reader, writer);
                 await StartFlowNews();
                 
             }
