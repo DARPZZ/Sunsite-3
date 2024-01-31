@@ -62,9 +62,9 @@ namespace Sunsite_3.View
                 writer = App.Sharedata.Writer;
                 reader = App.Sharedata.Reader;
 
-                con.Authenticate( reader, writer);
+                con.Authenticate(reader, writer);
                 await StartFlowNews();
-                
+
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace Sunsite_3.View
 
         private async Task StartFlowNews()
         {
-           
+
             ListboxList.IsEnabled = false;
             favouritsbox.IsEnabled = false;
             await Task.Run(() => ReceiveNews());
@@ -90,7 +90,7 @@ namespace Sunsite_3.View
             Dispatcher.Invoke(() =>
             {
                 ListboxList.Items.Clear();
-                LoadingProgressBar.Visibility = Visibility.Visible; 
+                LoadingProgressBar.Visibility = Visibility.Visible;
             });
 
             writer.WriteLine("LIST");
@@ -126,21 +126,21 @@ namespace Sunsite_3.View
 
         public void GetSpecializedInfo(ListBox genListBox)
         {
-            if(genListBox.SelectedItem != null)
+            if (genListBox.SelectedItem != null)
             {
                 string selectedItem = genListBox.SelectedItem.ToString();
                 App.Sharedata.ForPosting = selectedItem;
                 Debug.WriteLine(selectedItem);
                 GetArticlesInNewsgroup(selectedItem);
             }
-           
+
         }
 
 
         private void ListboxList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
-            GetSpecializedInfo(ListboxList);
+           GetSpecializedInfo(ListboxList);
           
 
         }
@@ -198,14 +198,14 @@ namespace Sunsite_3.View
         }
         private void Each_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(Each.SelectedItem !=null)
+            if (Each.SelectedItem != null)
             {
                 string selectedItem = Each.SelectedItem.ToString();
 
                 ReadArticle(selectedItem);
                 ((App)App.Current).ChangeUserControl(typeof(MessageViewModel));
             }
-          
+
         }
 
         private void SettingsClick(object sender, RoutedEventArgs e)
@@ -223,7 +223,7 @@ namespace Sunsite_3.View
             if (e.Key == Key.Enter)
             {
                 var userWord = Searching.Text;
-               
+
                 if (userWord == "")
                 {
                     StartFlowNews();
@@ -240,29 +240,29 @@ namespace Sunsite_3.View
         {
             favouritsbox.Items.Clear();
 
-            
-           await Task.Run(() =>
-            {
-                int threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
 
-                Debug.WriteLine($"Thread {threadId} reeeeeeeeeeeeeeeeeeeeeeeeee");
+            await Task.Run(() =>
+             {
+                 int threadId = System.Threading.Thread.CurrentThread.ManagedThreadId;
 
-                var parser = new FileIniDataParser();
-                IniData data = parser.ReadFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
+                 Debug.WriteLine($"Thread {threadId} reeeeeeeeeeeeeeeeeeeeeeeeee");
 
-                SectionData favorSection = data.Sections.GetSectionData("favor");
+                 var parser = new FileIniDataParser();
+                 IniData data = parser.ReadFile(@"C:\Users\rasmu\Documents\Sunsite webserver\Login.ini");
 
-                foreach (KeyData key in favorSection.Keys)
-                {
-                    string value = key.Value;
+                 SectionData favorSection = data.Sections.GetSectionData("favor");
 
-                    
-                    Dispatcher.Invoke(() =>
-                    {
-                        favouritsbox.Items.Add(value);
-                    });
-                }
-            });
+                 foreach (KeyData key in favorSection.Keys)
+                 {
+                     string value = key.Value;
+
+
+                     Dispatcher.Invoke(() =>
+                     {
+                         favouritsbox.Items.Add(value);
+                     });
+                 }
+             });
         }
 
 
@@ -284,13 +284,13 @@ namespace Sunsite_3.View
             if (favouritsbox.SelectedItem != null)
             {
                 string wordToDelte;
-            wordToDelte = favouritsbox.SelectedItem.ToString();
-             
-            Debug.WriteLine(wordToDelte);
-            infFil.DeleteKey(wordToDelte, "favor");
-            ReadFavorits();
-        }
-                
+                wordToDelte = favouritsbox.SelectedItem.ToString();
+
+                Debug.WriteLine(wordToDelte);
+                infFil.DeleteKey(wordToDelte, "favor");
+                ReadFavorits();
+            }
+
         }
     }
 }
